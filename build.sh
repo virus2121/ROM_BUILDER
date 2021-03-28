@@ -3,17 +3,18 @@
 mkdir -p /tmp/rom
 cd /tmp/rom
 
-git config --global user.name GeoPD
-git config --global user.email geoemmanuelpd2001@gmail.com
+git config --global user.name Chandler
+git config --global user.email chhandler_bing@gmail.com
 
-export rom=dotOS
+export rom=Descendant
 
 rom_one(){
- repo init --no-repo-verify -u git://github.com/DotOS/manifest.git -b dot11 -g default,-device,-mips,-darwin,-notdefault
+ repo init -u https://github.com/descendant-oss/manifest -b eleven-staging -g default,-device,-mips,-darwin,-notdefault
  repo sync --no-tags --no-clone-bundle --current-branch --force-sync --optimized-fetch -j16
- git clone https://$TOKEN@github.com/geopd/device_xiaomi_sakura_TEST.git -b dot-11 device/xiaomi/sakura
- git clone https://$TOKEN@github.com/geopd/vendor_xiaomi_sakura_TEST.git -b lineage-18.0 vendor/xiaomi
- . build/envsetup.sh && lunch dot_sakura-userdebug
+ git clone https://github.com/geopd/device_xiaomi_sakura -b dot-11 device/xiaomi/sakura
+ git clone https://github.com/geopd/vendor_xiaomi_sakura -b lineage-18.1 vendor/xiaomi
+ . build/envsetup.sh && lunch descendant_sakura-userdebug
+ 
 }
 
 rom_two(){
@@ -35,6 +36,7 @@ rom_three(){
  git clone https://github.com/Jabiyeff-Project/android_hardware_qcom_display -b 11.0 hardware/qcom-caf/msm8996/display
  git clone https://github.com/Jabiyeff-Project/android_hardware_qcom_media -b 11.0 hardware/qcom-caf/msm8996/media
  . build/envsetup.sh && lunch dot_sakura-userdebug
+ mka descendant
 }
 
 git clone https://$TOKEN@github.com/geopd/kernel_xiaomi_msm8953 -b beta-4.9-Q kernel/xiaomi/msm8953 
